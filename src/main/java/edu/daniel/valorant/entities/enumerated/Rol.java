@@ -1,4 +1,4 @@
-package edu.daniel.valorant.enumerated;
+package edu.daniel.valorant.entities.enumerated;
 
 public enum Rol {
     CENTINELA,
