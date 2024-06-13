@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import edu.daniel.valorant.entities.enumerated.Rol;
 import edu.daniel.valorant.repositories.AgentesRepository;
 
 @SpringBootApplication
@@ -16,7 +17,7 @@ public class ValorantWorldApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ValorantWorldApplication.class, args);
-
+		
 
 	}
 
@@ -24,6 +25,8 @@ public class ValorantWorldApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		System.out.println("Número de agentes almacenador en la tabla: " + agentesRepo.count());
 		agentesRepo.deleteById((long) 28);
+
+		System.out.println(agentesRepo.findByRol(Rol.CENTINELA));
 	}
 
 }
