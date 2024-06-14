@@ -23,10 +23,12 @@ public class ValorantWorldApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("Número de agentes almacenador en la tabla: " + agentesRepo.count());
-		agentesRepo.deleteById((long) 28);
 
-		System.out.println(agentesRepo.findByRol(Rol.CENTINELA));
+		System.out.println("Número de agentes almacenador en la tabla: " + agentesRepo.count());
+		System.out.println(agentesRepo.findById((long) 20));
+		// agentesRepo.deleteById((long) 20);
+
+		// System.out.println(agentesRepo.findByRol(Rol.CENTINELA));
 	}
 
 }

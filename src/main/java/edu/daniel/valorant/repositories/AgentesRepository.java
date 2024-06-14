@@ -9,5 +9,6 @@ import edu.daniel.valorant.entities.enumerated.Rol;
 public interface AgentesRepository extends JpaRepository <Agente, Long> {
 
     public List<Agente> findByRol(Rol rol);
+    List<Agente> findByPais(String pais);
 
 }
