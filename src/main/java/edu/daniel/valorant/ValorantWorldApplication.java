@@ -5,7 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import edu.daniel.valorant.entities.enumerated.Rol;
+//import edu.daniel.valorant.entities.enumerated.Rol;
 import edu.daniel.valorant.repositories.AgentesRepository;
 
 @SpringBootApplication
