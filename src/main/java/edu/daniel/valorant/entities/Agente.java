@@ -1,5 +1,7 @@
 package edu.daniel.valorant.entities;
 
+import java.util.List;
+
 import edu.daniel.valorant.entities.enumerated.Rol;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,6 +10,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
     @Entity
@@ -25,6 +28,7 @@ public class Agente {
     private Rol rol;
     private String ultimate;
     private String pais;
+    private List <Habilidad> habilidades;
 
     public Agente() {
     }
