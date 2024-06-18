@@ -29,6 +29,8 @@ public class Agente {
     private Rol rol;
     private String ultimate;
     private String pais;
+    // OneToMany es para mapear varios objetos de una lista 1 a varios
+    @OneToMany(mappedBy = "poseedor")
     private List <Habilidad> habilidades;
 
     public Agente() {
