@@ -2,6 +2,7 @@ package edu.daniel.valorant.entities;
 
 import java.util.List;
 
+import edu.daniel.valorant.entities.enumerated.Habilidad;
 import edu.daniel.valorant.entities.enumerated.Rol;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
