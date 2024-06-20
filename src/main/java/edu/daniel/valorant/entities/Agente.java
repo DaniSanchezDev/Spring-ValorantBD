@@ -4,10 +4,12 @@ import java.util.List;
 
 import edu.daniel.valorant.entities.enumerated.Habilidad;
 import edu.daniel.valorant.entities.enumerated.Rol;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,7 +32,9 @@ public class Agente {
     private String ultimate;
     private String pais;
     // OneToMany es para mapear varios objetos de una lista 1 a varios
-    @OneToMany(mappedBy = "poseedor")
+    // cascade hace que si se borra un agente, borre todas sus habilidades
+    // el fetch es la manera de conseguir las habilidades.
+    @OneToMany(mappedBy = "poseedor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List <Habilidad> habilidades;
 
     public Agente() {
