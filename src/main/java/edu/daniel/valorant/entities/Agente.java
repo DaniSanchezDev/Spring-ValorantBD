@@ -95,11 +95,21 @@ public class Agente {
         this.pais = pais;
     }
 
+    public List<Habilidad> getHabilidades() {
+        return habilidades;
+    }
+
+    public void setHabilidades(List<Habilidad> habilidades) {
+        this.habilidades = habilidades;
+    }
+
     @Override
     public String toString() {
         return "Agente [idAgente=" + idAgente + ", nombre=" + nombre + ", rol=" + rol + ", ultimate=" + ultimate
-                + ", pais=" + pais + "]";
+                + ", pais=" + pais + ", habilidades=" + habilidades + "]";
     }
+
+    
 
 
 }
