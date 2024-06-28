@@ -13,5 +13,6 @@ public interface AgentesRepository extends JpaRepository <Agente, Long> {
     public Agente findByNombreAndPais (String nombre, String pais);
     public Agente findByNombreAndPaisAndRol(String nombre, String pais, Rol rol);
     public List<Agente> findByIdAgenteGreaterThan(int idAgente);
+    public List <Agente> findByNombreStartingWith(String patron);
 
 }
