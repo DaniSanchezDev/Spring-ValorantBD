@@ -25,6 +25,7 @@ public class Agente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long idAgente;
+    @Column(unique = true)
     private String nombre;
     @Enumerated(EnumType.STRING)
     @Column(name="rol", columnDefinition = "ENUM('CENTINELA','INICIADOR','DUELISTA','CONTROLADOR')")
