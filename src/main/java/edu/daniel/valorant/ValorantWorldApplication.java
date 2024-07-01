@@ -12,6 +12,7 @@ import edu.daniel.valorant.entities.Agente;
 import edu.daniel.valorant.entities.enumerated.Rol;
 //import edu.daniel.valorant.entities.enumerated.Rol;
 import edu.daniel.valorant.repositories.AgentesRepository;
+import edu.daniel.valorant.repositories.IHabilidadesRepository;
 
 @SpringBootApplication
 // añadir el implements CommandLineRunner
@@ -19,6 +20,9 @@ public class ValorantWorldApplication implements CommandLineRunner {
 
 	@Autowired 
 	private AgentesRepository agentesRepo;
+
+	@Autowired
+	private IHabilidadesRepository hablidadesRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ValorantWorldApplication.class, args);
