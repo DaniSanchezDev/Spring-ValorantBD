@@ -30,6 +30,8 @@ public class ValorantWorldApplication implements CommandLineRunner {
 
 	}
 
+	
+
 	@Override
 	public void run(String... args) throws Exception {
 		// sout para contar el numero de agentes
@@ -49,6 +51,8 @@ public class ValorantWorldApplication implements CommandLineRunner {
 		System.out.println(resultadoConsulta.size());
 		// sout para encontrar segun que letra/as empiece el nombre
 		System.out.println(agentesRepo.findByNombreStartingWith("Re"));
+
+		System.out.println(hablidadesRepo.findAll());
 	}
 
 }
