@@ -1,9 +1,13 @@
 package edu.daniel.valorant.entities.enumerated;
 
+import edu.daniel.valorant.entities.Agente;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,13 +19,15 @@ public class Habilidad {
     private Long id;
     private String nombre;
     private String descripcion;
-    private Long poseedor;
+    @ManyToOne
+    @JoinColumn (name = "poseedor", referencedColumnName = "idAgente")
+    private Agente poseedor;
 
     public Habilidad() {
 
     }
 
-    public Habilidad(Long id, String nombre, String descripcion, Long poseedor) {
+    public Habilidad(Long id, String nombre, String descripcion, Agente poseedor) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -52,11 +58,11 @@ public class Habilidad {
         this.descripcion = descripcion;
     }
 
-    public Long getPoseedor() {
+    public Agente getPoseedor() {
         return poseedor;
     }
 
-    public void setPoseedor(Long poseedor) {
+    public void setPoseedor(Agente poseedor) {
         this.poseedor = poseedor;
     }
 
