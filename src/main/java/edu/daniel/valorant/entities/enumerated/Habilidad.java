@@ -3,6 +3,7 @@ package edu.daniel.valorant.entities.enumerated;
 import edu.daniel.valorant.entities.Agente;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -13,14 +14,15 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "habilidades")
 public class Habilidad {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
     private String nombre;
     private String descripcion;
-    @ManyToOne (targetEntity = Agente.class, optional = true)
-    @JoinColumn (name = "poseedor", referencedColumnName = "idAgente")
+    @ManyToOne (targetEntity = Agente.class, optional = true, fetch = FetchType.LAZY)
+    @JoinColumn (name = "poseedor", referencedColumnName = "id")
+    @JsonIgnore
     private Agente poseedor;
 
     public Habilidad() {
@@ -68,8 +70,7 @@ public class Habilidad {
 
     @Override
     public String toString() {
-        return "Habilidad [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", poseedor=" + poseedor
-                + "]";
+        return "Habilidad [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + "]";
     }
 
     

@@ -39,7 +39,7 @@ public class ValorantWorldApplication implements CommandLineRunner {
 		//sout para encontrar el id numero 20
 		System.out.println(agentesRepo.findById((long) 20));
 		// borrar el id 20
-		agentesRepo.deleteById((long) 20);
+		// agentesRepo.deleteById((long) 20);
 		// sout para encontrar por nombre, pais y rol (nombre del agente, pais, Rol. rol seleccionado )
 		System.out.println(agentesRepo.findByNombreAndPaisAndRol("reyna", "mexico", Rol.DUELISTA));
 		// sout para encontrar los agentes con id > 15
