@@ -19,7 +19,7 @@ public class Habilidad {
     private Long id;
     private String nombre;
     private String descripcion;
-    @ManyToOne
+    @ManyToOne (targetEntity = Agente.class, optional = true)
     @JoinColumn (name = "poseedor", referencedColumnName = "idAgente")
     private Agente poseedor;
 
