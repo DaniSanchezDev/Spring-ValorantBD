@@ -15,6 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Jugador {
@@ -33,7 +34,7 @@ public class Jugador {
     private LocalDate fechaNacimiento;
 
 
-    @ManyToAny (fetch = FetchType.EAGER)
+    @ManyToMany (targetEntity = Agente.class, fetch = FetchType.EAGER)
     @JoinTable(
         name = "jugadores_agentes",
         joinColumns = @JoinColumn(name = "jugador_id"),
