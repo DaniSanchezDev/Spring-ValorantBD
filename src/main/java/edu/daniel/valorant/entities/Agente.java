@@ -1,6 +1,9 @@
 package edu.daniel.valorant.entities;
 
 import java.util.List;
+import java.util.Set;
+
+import org.hibernate.annotations.ManyToAny;
 
 import edu.daniel.valorant.entities.enumerated.Habilidad;
 import edu.daniel.valorant.entities.enumerated.Rol;
@@ -13,6 +16,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -40,6 +44,9 @@ public class Agente {
 
     public Agente() {
     }
+
+    @ManyToMany(mappedBy = "agentes", fetch = FetchType.EAGER)
+    private Set<Jugador> jugadores;
 
     public Agente(String nombre, Rol rol, String ultimate, String pais) {
         this.nombre = nombre;
