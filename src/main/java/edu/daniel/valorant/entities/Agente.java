@@ -1,9 +1,9 @@
 package edu.daniel.valorant.entities;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.hibernate.annotations.ManyToAny;
 
 import edu.daniel.valorant.entities.enumerated.Habilidad;
 import edu.daniel.valorant.entities.enumerated.Rol;
@@ -45,8 +45,8 @@ public class Agente {
     public Agente() {
     }
 
-    @ManyToMany(mappedBy = "agentes", fetch = FetchType.EAGER)
-    private Set<Jugador> jugadores;
+    @ManyToMany(mappedBy = "agentes", fetch = FetchType.LAZY)
+    private Set<Jugador> jugadores = new HashSet<>();
 
     public Agente(String nombre, Rol rol, String ultimate, String pais) {
         this.nombre = nombre;
