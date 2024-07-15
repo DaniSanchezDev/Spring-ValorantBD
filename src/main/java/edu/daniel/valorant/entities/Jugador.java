@@ -40,7 +40,6 @@ public class Jugador {
         joinColumns = @JoinColumn(name = "jugador_id"),
         inverseJoinColumns = @JoinColumn (name = "agente_id")
     )
-
     private Set<Agente> agentes = new HashSet<>();
 
     public Jugador() {
@@ -143,7 +142,7 @@ public class Jugador {
     public String toString() {
         return "Jugador [nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", email=" + email
                 + ", nacionalidad=" + nacionalidad + ", apodo=" + apodo + ", fechaNacimiento=" + fechaNacimiento
-                + ", agentes=" + agentes + "]";
+                + /*", agentes=" + agentes + */ "]";
     }
 
 

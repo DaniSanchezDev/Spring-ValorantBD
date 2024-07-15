@@ -39,24 +39,26 @@ public class ValorantWorldApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// sout para contar el numero de agentes
-		System.out.println("Número de agentes almacenador en la tabla: " + agentesRepo.count());
+	//	System.out.println("Número de agentes almacenador en la tabla: " + agentesRepo.count());
 		//sout para encontrar el id numero 20
-		System.out.println(agentesRepo.findById((long) 20));
+	//	System.out.println(agentesRepo.findById((long) 20));
 		// borrar el id 20
 		// agentesRepo.deleteById((long) 20);
 		// sout para encontrar por nombre, pais y rol (nombre del agente, pais, Rol. rol seleccionado )
-		System.out.println(agentesRepo.findByNombreAndPaisAndRol("reyna", "mexico", Rol.DUELISTA));
+	//	System.out.println(agentesRepo.findByNombreAndPaisAndRol("reyna", "mexico", Rol.DUELISTA));
 		// sout para encontrar los agentes con id > 15
-		System.out.println(agentesRepo.findByIdAgenteGreaterThan(15));
+	//	System.out.println(agentesRepo.findByIdAgenteGreaterThan(15));
 		// sout para encontrar segun el rol
-		System.out.println(agentesRepo.findByRol(Rol.CENTINELA));
+	//	System.out.println(agentesRepo.findByRol(Rol.CENTINELA));
 
-		List<Agente> resultadoConsulta = agentesRepo.findByIdAgenteGreaterThan(15);
-		System.out.println(resultadoConsulta.size());
+	//	List<Agente> resultadoConsulta = agentesRepo.findByIdAgenteGreaterThan(15);
+	//	System.out.println(resultadoConsulta.size());
 		// sout para encontrar segun que letra/as empiece el nombre
-		System.out.println(agentesRepo.findByNombreStartingWith("Re"));
+	//	System.out.println(agentesRepo.findByNombreStartingWith("Re"));
 
-		System.out.println(hablidadesRepo.findAll());
+	//	System.out.println(hablidadesRepo.findAll());
+
+		System.out.println(agentesRepo.findByRol(Rol.CENTINELA));
 	}
 
 }
