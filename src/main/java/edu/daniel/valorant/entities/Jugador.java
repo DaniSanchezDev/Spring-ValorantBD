@@ -34,12 +34,7 @@ public class Jugador {
     private LocalDate fechaNacimiento;
 
 
-    @ManyToMany (targetEntity = Agente.class, fetch = FetchType.EAGER)
-    @JoinTable(
-        name = "jugadores_agentes",
-        joinColumns = @JoinColumn(name = "jugador_id"),
-        inverseJoinColumns = @JoinColumn (name = "agente_id")
-    )
+    
     private Set<Agente> agentes = new HashSet<>();
 
     public Jugador() {
