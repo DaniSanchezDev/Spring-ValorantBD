@@ -45,8 +45,6 @@ public class Agente {
     public Agente() {
     }
 
-    @ManyToMany(mappedBy = "agentes", fetch = FetchType.LAZY)
-    private Set<Jugador> jugadores = new HashSet<>();
 
     public Agente(String nombre, Rol rol, String ultimate, String pais) {
         this.nombre = nombre;
