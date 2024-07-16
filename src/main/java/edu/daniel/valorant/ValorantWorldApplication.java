@@ -14,6 +14,7 @@ import edu.daniel.valorant.entities.enumerated.Rol;
 import edu.daniel.valorant.repositories.AgentesRepository;
 import edu.daniel.valorant.repositories.IHabilidadesRepository;
 import edu.daniel.valorant.repositories.IJugadoresRepository;
+import edu.daniel.valorant.repositories.IPartidasRepository;
 
 @SpringBootApplication
 // añadir el implements CommandLineRunner
@@ -27,6 +28,9 @@ public class ValorantWorldApplication implements CommandLineRunner {
 
 	@Autowired
 	private IJugadoresRepository jugadoresRepo;
+
+	@Autowired
+	private IPartidasRepository partidasRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ValorantWorldApplication.class, args);
@@ -58,7 +62,9 @@ public class ValorantWorldApplication implements CommandLineRunner {
 
 	//	System.out.println(hablidadesRepo.findAll());
 
-		System.out.println(agentesRepo.findByRol(Rol.CENTINELA));
+	//	System.out.println(agentesRepo.findByRol(Rol.CENTINELA));
+
+		System.out.println(partidasRepo.findAll());
 	}
 
 }
