@@ -62,7 +62,7 @@ public class ValorantWorldApplication implements CommandLineRunner {
 
 	//	System.out.println(agentesRepo.findByRol(Rol.CENTINELA));
 
-	//	System.out.println(agentesRepo.findByRol(Rol.CENTINELA));;
+	//g	System.out.println(agentesRepo.findByRol(Rol.CENTINELA));;
 		System.out.println(partidasRepo.findAll());
 	}
 

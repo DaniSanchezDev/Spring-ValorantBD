@@ -6,7 +6,9 @@ import java.util.Set;
 
 import org.hibernate.annotations.Collate;
 import org.hibernate.annotations.ManyToAny;
+import org.hibernate.mapping.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -16,40 +18,43 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import java.util.*;
 
 @Entity
-@Table (name = "jugadores")
+@Table (name="jugadores")
 public class Jugador {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column (length = 55, nullable = false)
     private String nombre;
+    @Column (length = 55, nullable = false)
     private String apellido;
     private int edad;
+    @Column (length = 255, nullable = false)
     private String email;
+    @Column (length = 55, nullable = false)
     private String nacionalidad;
 
-    @Column(unique = true)
+    @Column(name = "apodo", length = 55, nullable = false, unique = true)
     private String apodo;
-
+    @Temporal(TemporalType.DATE)
     private LocalDate fechaNacimiento;
 
-
-    @ManyToMany (targetEntity = Agente.class, fetch = FetchType.EAGER)
-    @JoinTable(
-        name = "jugadores_partidas",
-        joinColumns = @JoinColumn(name = "jugador_id"),
-        inverseJoinColumns = @JoinColumn (name = "agente_id")
-    )
-    private Set<Agente> agentes = new HashSet<>();
+    @OneToMany(mappedBy = "jugador", cascade = CascadeType.ALL,orphanRemoval = true)
+    java.util.List<Partida> partidas;
 
     public Jugador() {
 
     }
 
     public Jugador(String nombre, String apellido, int edad, String email, String nacionalidad, String apodo,
-            LocalDate fechaNacimiento, Set<Agente> agentes) {
+            LocalDate fechaNacimiento, java.util.List<Partida> partidas) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
@@ -57,7 +62,7 @@ public class Jugador {
         this.nacionalidad = nacionalidad;
         this.apodo = apodo;
         this.fechaNacimiento = fechaNacimiento;
-        this.agentes = agentes;
+        this.partidas = partidas;
     }
     
 
@@ -130,16 +135,6 @@ public class Jugador {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-
-    public Set<Agente> getAgentes() {
-        return agentes;
-    }
-
-
-    public void setAgentes(Set<Agente> agentes) {
-        this.agentes = agentes;
-    }
-
     @Override
     public String toString() {
         return "Jugador [nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", email=" + email
@@ -147,6 +142,15 @@ public class Jugador {
                 + /*", agentes=" + agentes + */ "]";
     }
 
+    public java.util.List<Partida> getPartidas() {
+        return partidas;
+    }
+
+    public void setPartidas(java.util.List<Partida> partidas) {
+        this.partidas = partidas;
+    }
+
+    
 
     
 
