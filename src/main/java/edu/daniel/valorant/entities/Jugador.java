@@ -6,6 +6,8 @@ import java.util.Set;
 
 import org.hibernate.annotations.Collate;
 import org.hibernate.annotations.ManyToAny;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.mapping.List;
 
 import jakarta.persistence.CascadeType;
@@ -46,6 +48,7 @@ public class Jugador {
     @Temporal(TemporalType.DATE)
     private LocalDate fechaNacimiento;
 
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToMany(mappedBy = "jugador", cascade = CascadeType.ALL,orphanRemoval = true)
     java.util.List<Partida> partidas;
 
