@@ -8,7 +8,6 @@ import org.hibernate.annotations.Collate;
 import org.hibernate.annotations.ManyToAny;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.mapping.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -24,7 +23,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-import java.util.*;
+import java.util.List;
 
 @Entity
 @Table (name="jugadores")
@@ -50,7 +49,7 @@ public class Jugador {
 
     @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToMany(mappedBy = "jugador", cascade = CascadeType.ALL,orphanRemoval = true)
-    java.util.List<Partida> partidas;
+    List<Partida> partidas;
 
     public Jugador() {
 

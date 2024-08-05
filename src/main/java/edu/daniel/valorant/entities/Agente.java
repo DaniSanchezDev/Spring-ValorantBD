@@ -4,6 +4,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import edu.daniel.valorant.entities.enumerated.Rol;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -25,18 +28,21 @@ public class Agente {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long idAgente;
-    @Column(unique = true)
+    private Long id;
+    @Column(length = 55, nullable = false, unique = true)
     private String nombre;
+
     @Enumerated(EnumType.STRING)
     @Column(name="rol", columnDefinition = "ENUM('CENTINELA','INICIADOR','DUELISTA','CONTROLADOR')")
     private Rol rol;
+    @Column(length = 55, nullable = false, unique = true)
     private String ultimate;
+    @Column(length = 55, nullable = false)
     private String pais;
     // OneToMany es para mapear varios objetos de una lista 1 a varios
     // cascade hace que si se borra un agente, borre todas sus habilidades
     // el fetch es la manera de conseguir las habilidades.
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToMany(mappedBy = "poseedor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List <Habilidad> habilidades;
 
@@ -51,20 +57,20 @@ public class Agente {
         this.pais = pais;
     }
 
-    public Agente(long idAgente, String nombre, Rol rol, String ultimate, String pais) {
-        this.idAgente = idAgente;
+    public Agente(long id, String nombre, Rol rol, String ultimate, String pais) {
+        this.id = id;
         this.nombre = nombre;
         this.rol = rol;
         this.ultimate = ultimate;
         this.pais = pais;
     }
 
-    public long getIdAgente() {
-        return idAgente;
+    public long getid() {
+        return id;
     }
 
-    public void setIdAgente(long idAgente) {
-        this.idAgente = idAgente;
+    public void setid(long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -109,7 +115,7 @@ public class Agente {
 
     @Override
     public String toString() {
-        return "Agente [idAgente=" + idAgente + ", nombre=" + nombre + ", rol=" + rol + ", ultimate=" + ultimate
+        return "Agente [id=" + id + ", nombre=" + nombre + ", rol=" + rol + ", ultimate=" + ultimate
                 + ", pais=" + pais + ", habilidades=" + habilidades + "]";
     }
 
