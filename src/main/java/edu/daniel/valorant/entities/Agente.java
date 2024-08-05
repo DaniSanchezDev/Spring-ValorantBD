@@ -6,6 +6,7 @@ import java.util.Set;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.data.repository.query.parser.Part;
 
 import edu.daniel.valorant.entities.enumerated.Rol;
 import jakarta.persistence.CascadeType;
@@ -45,6 +46,9 @@ public class Agente {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToMany(mappedBy = "poseedor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List <Habilidad> habilidades;
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @OneToMany(mappedBy = "agente", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List <Partida> partidas;
 
     public Agente() {
     }

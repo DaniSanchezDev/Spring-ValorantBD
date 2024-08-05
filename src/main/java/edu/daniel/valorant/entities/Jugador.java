@@ -49,7 +49,7 @@ public class Jugador {
 
     @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToMany(mappedBy = "jugador", cascade = CascadeType.ALL,orphanRemoval = true)
-    List<Partida> partidas;
+    private List<Partida> partidas;
 
     public Jugador() {
 
