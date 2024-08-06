@@ -2,7 +2,10 @@ package edu.daniel.valorant.entities;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.Collate;
+
 import jakarta.annotation.Generated;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,6 +30,7 @@ public class Partida {
     @JoinColumn(name = "agente_id")
     private Agente agente;
 
+    @Column(columnDefinition = "DATATIME", nullable = false)
     private LocalDateTime fecha;
 
     public Long getId() {
