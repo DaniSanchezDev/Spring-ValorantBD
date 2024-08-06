@@ -15,7 +15,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "jugadores_partidas")
+@Table(name = "jugadores_agentes")
 public class Partida {
 
 
