@@ -18,7 +18,7 @@ public class Habilidad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     @Column (length = 55, nullable = false)
     private String nombre;
     @Lob
@@ -33,18 +33,18 @@ public class Habilidad {
 
     }
 
-    public Habilidad(Long id, String nombre, String descripcion, Agente poseedor) {
+    public Habilidad(Integer id, String nombre, String descripcion, Agente poseedor) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.poseedor = poseedor;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
