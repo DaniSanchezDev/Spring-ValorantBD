@@ -22,107 +22,84 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-    @Entity
-    @Table(name = "agentes")
+@Entity
+@Table(name="agentes")
 public class Agente {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(length = 55, nullable = false, unique = true)
+    @Column(name="id")
+    private Long idAgente;
+    @Column(length = 55, unique = true, nullable = false)
     private String nombre;
-
     @Enumerated(EnumType.STRING)
-    @Column(name="rol", columnDefinition = "ENUM('CENTINELA','INICIADOR','DUELISTA','CONTROLADOR')")
+    @Column(name="rol", columnDefinition = "ENUM('CENTINELA', 'INICIADOR', 'DUELISTA', 'CONTROLADOR')")
     private Rol rol;
-    @Column(length = 55, nullable = false, unique = true)
+    @Column(length = 55, unique = true, nullable = false)
     private String ultimate;
-    @Column(length = 55, nullable = false)
+    @Column(length = 55, nullable = true)
     private String pais;
-    // OneToMany es para mapear varios objetos de una lista 1 a varios
-    // cascade hace que si se borra un agente, borre todas sus habilidades
-    // el fetch es la manera de conseguir las habilidades.
     @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToMany(mappedBy = "poseedor", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List <Habilidad> habilidades;
+    private List<Habilidad> habilidades;
+
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @OneToMany(mappedBy = "agente", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List <Partida> partidas;
+    @OneToMany(mappedBy = "agente", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    List<Partida> partidas;
 
-    public Agente() {
+    
+    public Long getIdAgente() {
+        return idAgente;
     }
-
-
-    public Agente(String nombre, Rol rol, String ultimate, String pais) {
-        this.nombre = nombre;
-        this.rol = rol;
-        this.ultimate = ultimate;
-        this.pais = pais;
+    public void setIdAgente(Long idAgente) {
+        this.idAgente = idAgente;
     }
-
-    public Agente(long id, String nombre, Rol rol, String ultimate, String pais) {
-        this.id = id;
-        this.nombre = nombre;
-        this.rol = rol;
-        this.ultimate = ultimate;
-        this.pais = pais;
-    }
-
-    public long getid() {
-        return id;
-    }
-
-    public void setid(long id) {
-        this.id = id;
-    }
-
     public String getNombre() {
         return nombre;
     }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
     public Rol getRol() {
         return rol;
     }
-
     public void setRol(Rol rol) {
         this.rol = rol;
     }
-
     public String getUltimate() {
         return ultimate;
     }
-
     public void setUltimate(String ultimate) {
         this.ultimate = ultimate;
     }
-
     public String getPais() {
         return pais;
     }
-
     public void setPais(String pais) {
         this.pais = pais;
     }
-
     public List<Habilidad> getHabilidades() {
         return habilidades;
     }
-
     public void setHabilidades(List<Habilidad> habilidades) {
         this.habilidades = habilidades;
     }
+    
 
     @Override
     public String toString() {
-        return "Agente [id=" + id + ", nombre=" + nombre + ", rol=" + rol + ", ultimate=" + ultimate
+        return "Agente [idAgente=" + idAgente + ", nombre=" + nombre + ", rol=" + rol + ", ultimate=" + ultimate
                 + ", pais=" + pais + ", habilidades=" + habilidades + "]";
     }
-
+    public List<Partida> getPartidas() {
+        return partidas;
+    }
+    public void setPartidas(List<Partida> partidas) {
+        this.partidas = partidas;
+    }
     
 
+    
+    
 
 }
