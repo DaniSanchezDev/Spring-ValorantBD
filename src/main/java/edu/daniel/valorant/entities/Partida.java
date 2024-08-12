@@ -15,22 +15,19 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "jugadores_agentes")
+@Table(name="jugadores_agentes")
 public class Partida {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "jugador_id")
+    @JoinColumn(name="jugador_id")
     private Jugador jugador;
-
     @ManyToOne
-    @JoinColumn(name = "agente_id")
+    @JoinColumn(name="agente_id")
     private Agente agente;
 
-    @Column(columnDefinition = "DATATIME", nullable = false)
     private LocalDateTime fecha;
 
     public Long getId() {
